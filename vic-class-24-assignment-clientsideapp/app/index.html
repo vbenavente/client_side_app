@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ice Creamery</title>
+</head>
+<body ng-app="IceCreameryApp">
+  <main ng-controller="IceCreamController as icctrl" ng-init="icctrl.getIceCream()">
+    <h1>Ice Cream</h1>
+    <ul>
+      <li ng-repeat="icecream in icctrl.icecream">
+        {{icecream.body}}
+        <button ng-click="icecream.edit = !icecream.edit">Edit</button>
+      <form ng-hide="!icecream.edit" ng-submit="icctrl.updateIceCream(icecream, updateIceCream)">
+        <input type ="text" ng-model="updatedIceCream"/>
+        <button ng-click="icctrl.deleteIceCream(icecream)">Delete</button>
+      </form>
+      </li>
+    </ul>
+    <form ng-submit="icctrl.addIceCream()">
+      <input ng-model="icctrl.newIceCream.body" type="text"/>
+      <button type="submit">New Ice Cream</button>
+    </form>
+  </main>
+  <script src="./bundle.js"></script>
+</body>
+</html>
