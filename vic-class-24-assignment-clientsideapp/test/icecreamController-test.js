@@ -35,7 +35,7 @@ describe('IceCream Controller Tests', () => {
   });
 
   it('should create an icecream order', () => {
-    $httpBackend.expectPOST('http://localhost:3000/')
+    $httpBackend.expectPOST('http://localhost:3000/icecream')
     .respond(200, {flavor: 'chocolate'});
 
     icctrl.newIceCream = {flavor: 'chocolate'};
@@ -46,7 +46,7 @@ describe('IceCream Controller Tests', () => {
 
   it('should delete an icecream order', () => {
     let testIceCream = {flavor: 'butter pecan', _id:1};
-    $httpBackend.expectDELETE('http://localhost:3000/1')
+    $httpBackend.expectDELETE('http://localhost:3000/icecream/1')
     .respond(200, {message: 'successfully deleted'});
 
     icctrl.icecream.push(testIceCream);

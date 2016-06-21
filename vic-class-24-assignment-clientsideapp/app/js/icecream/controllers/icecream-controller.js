@@ -28,7 +28,6 @@ IceCreamController.prototype.addIceCream = function() {
 
 IceCreamController.prototype.updateIceCream = function(icecream, updatedIceCream) {
   icecream.flavor = updatedIceCream.flavor;
-  console.log('flavor!!!', icecream);
   this.$http.put('http://localhost:3000/icecream/' + icecream._id, icecream)
   .then(() => {
     this.icecream = this.icecream.map(n => {

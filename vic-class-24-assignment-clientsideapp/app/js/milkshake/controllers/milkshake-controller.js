@@ -17,7 +17,7 @@ MilkShakeController.prototype.getMilkShake = function() {
 };
 
 MilkShakeController.prototype.addMilkShake = function() {
-  this.$http.post('http://localhost:3000/', this.newMilkShake)
+  this.$http.post('http://localhost:3000/milkshake', this.newMilkShake)
   .then((res) => {
     this.milkshake.push(res.data);
     this.newMilkShake = null;
@@ -27,8 +27,8 @@ MilkShakeController.prototype.addMilkShake = function() {
 };
 
 MilkShakeController.prototype.updateMilkShake = function(milkshake, updatedMilkShake) {
-  milkshake.body = updatedMilkShake.body;
-  this.$http.put('http://localhost:3000/milkshake', milkshake)
+  milkshake.flavor = updatedMilkShake.flavor;
+  this.$http.put('http://localhost:3000/milkshake/' + milkshake._id, milkshake)
   .then(() => {
     this.milkshake = this.milkshake.map(n => {
       return n._id === milkshake._id ? milkshake : n;
@@ -39,7 +39,7 @@ MilkShakeController.prototype.updateMilkShake = function(milkshake, updatedMilkS
 };
 
 MilkShakeController.prototype.deleteMilkShake = function(milkshake) {
-  this.$http.delete('http://localhost:3000/' + milkshake._id)
+  this.$http.delete('http://localhost:3000/milkshake/' + milkshake._id)
   .then(() => {
     let index = this.milkshake.indexOf(milkshake);
     this.milkshake.splice(index, 1);

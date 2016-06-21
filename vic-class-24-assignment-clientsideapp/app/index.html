@@ -32,13 +32,14 @@
       <button ng-click="milkshake.edit = !milkshake.edit">Edit</button>
       <form ng-hide="!milkshake.edit" ng-submit="msctrl.updateMilkShake(milkshake, updatedMilkShake)">
         <input type ="text" ng-model="updatedMilkShake.flavor"/>
+        <button type="submit">Update Flavor</button>
         <button ng-click="msctrl.deleteMilkShake(milkshake)">Delete</button>
       </form>
     </li>
   </ul>
   <form ng-submit="msctrl.addMilkShake()">
     <input ng-model="msctrl.newMilkShake.flavor" type="text"/>
-    <button type="submit">New Milk Shake</button>
+    <button type="submit">New MilkShake Flavor</button>
   </form>
 </section>
 </main>
