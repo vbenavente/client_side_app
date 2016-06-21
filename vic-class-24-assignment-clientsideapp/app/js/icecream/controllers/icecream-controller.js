@@ -8,16 +8,16 @@ function IceCreamController($http) {
 }
 
 IceCreamController.prototype.getIceCream = function() {
-  this.$http.get('http:/localhost:3000/icecream')
+  this.$http.get('http://localhost:3000/icecream')
   .then((res) => {
-    this.icecream = res.data;
+    this.icecream = res.data.icecream;
   }, (err) => {
     console.log(err);
   });
 };
 
 IceCreamController.prototype.addIceCream = function() {
-  this.$http.post('http//localhost:3000/', this.newIceCream)
+  this.$http.post('http://localhost:3000/', this.newIceCream)
   .then((res) => {
     this.icecream.push(res.data);
     this.newIceCream = null;
@@ -27,12 +27,19 @@ IceCreamController.prototype.addIceCream = function() {
 };
 
 IceCreamController.prototype.updateIceCream = function(icecream, updatedIceCream) {
-  let arrayIceCream = this.icecream[this.icecream.indexOf(icecream)];
-  arrayIceCream.body = updatedIceCream;
+  icecream.body = updatedIceCream.body;
+  this.$http.put('http://localhost:3000/icecream', icecream)
+  .then(() => {
+    this.icecream = this.icecream.map(n => {
+      return n._id === icecream._id ? icecream : n;
+    });
+  }, (err) => {
+    console.log(err);
+  });
 };
 
 IceCreamController.prototype.deleteIceCream = function(icecream) {
-  this.$http.delete('http//localhost:3000/' + icecream._id)
+  this.$http.delete('http://localhost:3000/' + icecream._id)
   .then(() => {
     let index = this.icecream.indexOf(icecream);
     this.icecream.splice(index, 1);

@@ -22,7 +22,7 @@ gulp.task('copy', () => {
   .pipe(gulp.dest(__dirname + '/build'));
 });
 
-gulp.take('bundle', () => {
+gulp.task('bundle', () => {
   return gulp.src(paths.js)
   .pipe(webpack({
     output: {
