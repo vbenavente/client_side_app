@@ -2,7 +2,7 @@
 
 const angular = require('angular');
 require('angular-mocks');
-require('../app/js/**/**/*.js');
+require('../app/js/client.js');
 
 describe('IceCream Controller Tests', () => {
   let icctrl;
@@ -26,18 +26,17 @@ describe('IceCream Controller Tests', () => {
   });
 
   it('should get a list of icecream ordered', () => {
-    $httpBackend.expectGET('http://localhost:3000')
-    .respond(200, {data: [{flavor: 'strawberry'}]});
+    $httpBackend.expectGET('http://localhost:3000/icecream')
+    .respond(200, {flavor: 'strawberry'});
 
     icctrl.getIceCream();
     $httpBackend.flush();
-
-    expect(icctrl.icecream[0].flavor).toBe('strawberry');
+    expect(icctrl.icecream.flavor).toBe('strawberry');
   });
 
   it('should create an icecream order', () => {
-    $httpBackend.expectPOST('http://localhost:3000')
-    .respond(200, {data: {flavor: 'chocolate'}});
+    $httpBackend.expectPOST('http://localhost:3000/')
+    .respond(200, {flavor: 'chocolate'});
 
     icctrl.newIceCream = {flavor: 'chocolate'};
     icctrl.addIceCream();
@@ -55,6 +54,6 @@ describe('IceCream Controller Tests', () => {
 
     $httpBackend.flush();
 
-    expect(icctrl.icecream.length).toBe(1);
+    expect(icctrl.icecream.length).toBe(0);
   });
 });

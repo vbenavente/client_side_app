@@ -17,7 +17,7 @@ IceCreamController.prototype.getIceCream = function() {
 };
 
 IceCreamController.prototype.addIceCream = function() {
-  this.$http.post('http://localhost:3000/', this.newIceCream)
+  this.$http.post('http://localhost:3000/icecream', this.newIceCream)
   .then((res) => {
     this.icecream.push(res.data);
     this.newIceCream = null;
@@ -27,8 +27,9 @@ IceCreamController.prototype.addIceCream = function() {
 };
 
 IceCreamController.prototype.updateIceCream = function(icecream, updatedIceCream) {
-  icecream.body = updatedIceCream.body;
-  this.$http.put('http://localhost:3000/icecream', icecream)
+  icecream.flavor = updatedIceCream.flavor;
+  console.log('flavor!!!', icecream);
+  this.$http.put('http://localhost:3000/icecream/' + icecream._id, icecream)
   .then(() => {
     this.icecream = this.icecream.map(n => {
       return n._id === icecream._id ? icecream : n;
@@ -39,7 +40,7 @@ IceCreamController.prototype.updateIceCream = function(icecream, updatedIceCream
 };
 
 IceCreamController.prototype.deleteIceCream = function(icecream) {
-  this.$http.delete('http://localhost:3000/' + icecream._id)
+  this.$http.delete('http://localhost:3000/icecream/' + icecream._id)
   .then(() => {
     let index = this.icecream.indexOf(icecream);
     this.icecream.splice(index, 1);
