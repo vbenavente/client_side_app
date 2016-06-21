@@ -1,7 +1,7 @@
 'use strict';
 
 const angular = require('angular');
-const treatApp = angular.module('IceCreameryApp', []);
+const IceCreameryApp = angular.module('IceCreameryApp', []);
 
-require('./icecream/icecream')(treatApp);
-require('./milkshake/milkshake')(treatApp);
+require('./icecream/icecream')(IceCreameryApp);
+require('./milkshake/milkshake')(IceCreameryApp);
