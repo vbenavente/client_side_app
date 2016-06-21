@@ -12,17 +12,36 @@
       <li ng-repeat="icecream in icctrl.icecream">
         {{icecream}}
         <button ng-click="icecream.edit = !icecream.edit">Edit</button>
-      <form ng-hide="!icecream.edit" ng-submit="icctrl.updateIceCream(icecream, updatedIceCream)">
-        <input type ="text" ng-model="updatedIceCream.flavor"/>
-        <button ng-click="icctrl.deleteIceCream(icecream)">Delete</button>
-      </form>
+        <form ng-hide="!icecream.edit" ng-submit="icctrl.updateIceCream(icecream, updatedIceCream)">
+          <input type ="text" ng-model="updatedIceCream.flavor"/>
+          <button type="submit">Update Flavor</button>
+          <button ng-click="icctrl.deleteIceCream(icecream)">Delete</button>
+        </form>
       </li>
     </ul>
     <form ng-submit="icctrl.addIceCream()">
       <input ng-model="icctrl.newIceCream.flavor" type="text"/>
-      <button type="submit">New Ice Cream</button>
+      <button type="submit">New IceCream Flavor</button>
     </form>
   </section>
+  <section ng-controller="MilkShakeController as msctrl" ng-init="msctrl.getMilkShake()">
+  <h1>Milk Shake</h1>
+  <ul>
+    <li ng-repeat="milkshake in msctrl.milkshake">
+      {{milkshake}}
+      <button ng-click="milkshake.edit = !milkshake.edit">Edit</button>
+      <form ng-hide="!milkshake.edit" ng-submit="msctrl.updateMilkShake(milkshake, updatedMilkShake)">
+        <input type ="text" ng-model="updatedMilkShake.flavor"/>
+        <button type="submit">Update Flavor</button>
+        <button ng-click="msctrl.deleteMilkShake(milkshake)">Delete</button>
+      </form>
+    </li>
+  </ul>
+  <form ng-submit="msctrl.addMilkShake()">
+    <input ng-model="msctrl.newMilkShake.flavor" type="text"/>
+    <button type="submit">New MilkShake Flavor</button>
+  </form>
+</section>
 </main>
 <script src="./bundle.js"></script>
 </body>
