@@ -4,10 +4,10 @@ const gulp = require('gulp');
 const eslint = require('eslint');
 const webpack = require('webpack-stream');
 
-var files = ['*.js', '.app/*.js', '.app/js/*.js', './app/js/treat/*.js', './app/js/treat/controllers/*.js'];
+var files = ['*.js', '.app/*.js', '.app/js/*.js', './app/js/icecream/*.js', './app/js/milkshake/*.js',  './app/js/icecream/controllers/*.js', './app/js/milkshake/controllers/*.js'];
 
 const paths = {
-  js:__dirname + 'app/js/*.js',
+  js:__dirname + '/app/js/**/**/*.js',
   html:__dirname + '/app/index.html'
 };
 

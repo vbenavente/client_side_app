@@ -10,7 +10,7 @@ function IceCreamController($http) {
 IceCreamController.prototype.getIceCream = function() {
   this.$http.get('http://localhost:3000/icecream')
   .then((res) => {
-    this.icecream = res.data.icecream;
+    this.icecream = res.data;
   }, (err) => {
     console.log(err);
   });
