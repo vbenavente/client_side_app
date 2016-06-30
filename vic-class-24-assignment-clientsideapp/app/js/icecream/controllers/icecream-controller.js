@@ -3,18 +3,16 @@ module.exports = function(app) {
 };
 
 function IceCreamController($http) {
-  this.$http = $http;
   this.icecream = [];
-}
 
-IceCreamController.prototype.getIceCream = function() {
-  this.$http.get('http://localhost:3000/icecream')
-  .then((res) => {
-    this.icecream = res.data;
-  }, (err) => {
-    console.log(err);
-  });
-};
+  this.getIceCream = function() {
+    $http.get('http://localhost:3000/icecream')
+    .then((res) => {
+      this.icecream = res.data;
+    }, (err) => {
+      console.log(err);
+    });
+  }.bind(this);
 
 IceCreamController.prototype.addIceCream = function() {
   this.$http.post('http://localhost:3000/icecream', this.newIceCream)
@@ -46,4 +44,5 @@ IceCreamController.prototype.deleteIceCream = function(icecream) {
   }, (err) => {
     console.log(err);
   });
+};
 };
