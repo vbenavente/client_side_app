@@ -5,41 +5,36 @@
   <title>Ice Creamery</title>
 </head>
 <body ng-app="IceCreameryApp">
-  <main>
-    <section ng-controller="IceCreamController as icctrl" ng-init="icctrl.getIceCream()">
-    <h1>Ice Cream</h1>
-    <ul>
-      <li ng-repeat="icecream in icctrl.icecream">
-        {{icecream}}
-        <button ng-click="icecream.edit = !icecream.edit">Edit</button>
-        <form ng-hide="!icecream.edit" ng-submit="icctrl.updateIceCream(icecream, updatedIceCream)">
-          <input type ="text" ng-model="updatedIceCream.flavor"/>
-          <button type="submit">Update Flavor</button>
-          <button ng-click="icctrl.deleteIceCream(icecream)">Delete</button>
-        </form>
-      </li>
-    </ul>
-    <form ng-submit="icctrl.addIceCream()">
-      <input ng-model="icctrl.newIceCream.flavor" type="text"/>
-      <button type="submit">New IceCream Flavor</button>
-    </form>
-  </section>
+  <main ng-cloak ng-controller="IceCreamController as icctrl">
+    <icecream-order-history ng-init="icctrl.getIceCream()">
+      <!-- <button ng-click="icecream.edit = !icecream.edit">Edit</button> -->
+      <form ng-hide="!icecream.edit" ng-submit="icctrl.updateIceCream(icecream, updatedIceCream)">
+        <input type ="text" ng-model="updatedIceCream.flavor" placeholder="flavor"/>
+        <input type ="number" ng-model="updatedIceCream.scoops" placeholder="number of scoops"/>
+        <input type="text" ng-model="updatedIceCream.vessel" placeholder="waffle cone or cup"/>
+        <button type="submit">Update Ice Cream Order</button>
+        <button ng-click="icctrl.deleteIceCream(icecream)">Delete</button>
+      </form>
+  </icecream-order-history>
   <section ng-controller="MilkShakeController as msctrl" ng-init="msctrl.getMilkShake()">
   <h1>Milk Shake</h1>
   <ul>
-    <li ng-repeat="milkshake in msctrl.milkshake">
-      {{milkshake}}
+    <li ng-repeat="milkshake in msctrl.milkshake">Order: flavor: {{milkshake.flavor}} scoops: {{milkshake.scoops}} richness: {{milkshake.milkRichness}}
       <button ng-click="milkshake.edit = !milkshake.edit">Edit</button>
       <form ng-hide="!milkshake.edit" ng-submit="msctrl.updateMilkShake(milkshake, updatedMilkShake)">
-        <input type ="text" ng-model="updatedMilkShake.flavor"/>
-        <button type="submit">Update Flavor</button>
+        <input type ="text" ng-model="updatedMilkShake.flavor" placeholder="flavor"/>
+        <input type="number" ng-model="updatedMilkShake.scoops" placeholder="number of scoops"/>
+        <input type="text" ng-model="updatedMilkShake.milkRichness" placeholder="milk richness"/>
+        <button type="submit">Update Milk Shake Order</button>
         <button ng-click="msctrl.deleteMilkShake(milkshake)">Delete</button>
       </form>
     </li>
   </ul>
   <form ng-submit="msctrl.addMilkShake()">
-    <input ng-model="msctrl.newMilkShake.flavor" type="text"/>
-    <button type="submit">New MilkShake Flavor</button>
+    <input ng-model="msctrl.newMilkShake.flavor" type="text" placeholder="flavor"/>
+    <input ng-model="msctrl.newMilkShake.scoops" type="number" placeholder="number of scoops"/>
+    <input ng-model="msctrl.newMilkShake.milkRichness" type="text" placeholder="milk richness"/>
+    <button type="submit">New MilkShake Order</button>
   </form>
 </section>
 </main>

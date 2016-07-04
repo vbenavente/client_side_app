@@ -8,7 +8,7 @@ var files = ['*.js', './app/*.js', './app/js/*.js', './app/js/icecream/*.js', '.
 
 const paths = {
   js:__dirname + '/app/js/**/**/*.js',
-  html:__dirname + '/app/index.html'
+  html:__dirname + '/app/**/*.html'
 };
 
 gulp.task('lint', () => {
