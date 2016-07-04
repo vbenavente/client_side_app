@@ -3,4 +3,5 @@ module.exports = function(IceCreameryApp) {
   require('./directives/icecream-addorder-directive')(IceCreameryApp);
   require('./directives/icecream-orderhistory-directive')(IceCreameryApp);
   require('./directives/icecream-list-directive')(IceCreameryApp);
+  require('./directives/icecream-updateorder-directive')(IceCreameryApp);
 };
