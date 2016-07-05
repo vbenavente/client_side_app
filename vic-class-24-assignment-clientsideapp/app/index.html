@@ -6,8 +6,7 @@
 </head>
 <body ng-app="IceCreameryApp">
   <main ng-cloak ng-controller="IceCreamController as icctrl">
-    <icecream-order-history ng-init="icctrl.getIceCream()">
-      <!-- <button ng-click="icecream.edit = !icecream.edit">Edit</button> -->
+    <icecream-order-history ng-init="icctrl.getIceCream()" icecreams="icctrl.icecream" ng-click="icctrl.icecream.edit = !icctrl.icecrea.edit">
     </icecream-order-history>
     <section ng-controller="MilkShakeController as msctrl" ng-init="msctrl.getMilkShake()">
     <h1>Milk Shake</h1>

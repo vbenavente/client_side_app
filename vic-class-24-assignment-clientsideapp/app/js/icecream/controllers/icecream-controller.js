@@ -5,8 +5,8 @@ module.exports = function(app) {
 function IceCreamController($http) {
   this.icecream = [];
 
-  this.getIceCream = function(icecream) {
-    $http.get('http://localhost:3000/icecream', icecream)
+  this.getIceCream = function() {
+    $http.get('http://localhost:3000/icecream')
     .then((res) => {
       this.icecream = res.data;
     }, (err) => {

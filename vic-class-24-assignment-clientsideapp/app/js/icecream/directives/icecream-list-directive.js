@@ -2,7 +2,7 @@ module.exports = function(IceCreameryApp) {
   IceCreameryApp.directive('icecreamList', function () {
     return {
       scope: {
-        icecream: '@'
+        icecreams: '='
       },
       restrict: 'E',
       templateUrl: '/templates/icecream/icecream-list-directive.html',

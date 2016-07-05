@@ -2,6 +2,7 @@ module.exports = function(IceCreameryApp) {
   IceCreameryApp.directive('icecreamOrderHistory', function () {
     return {
       scope: {
+        icecreams: '='
       },
       restrict: 'E',
       templateUrl: '/templates/icecream/icecream-orderhistory-directive.html',
