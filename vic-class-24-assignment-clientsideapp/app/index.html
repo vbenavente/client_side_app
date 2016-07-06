@@ -5,9 +5,11 @@
   <title>Ice Creamery</title>
 </head>
 <body ng-app="IceCreameryApp">
-  <main ng-cloak ng-controller="IceCreamController as icctrl">
-    <icecream-order-history ng-init="icctrl.getIceCream()" icecreams="icctrl.icecream" ng-click="icctrl.icecream.edit = !icctrl.icecrea.edit">
-    </icecream-order-history>
+  <main>
+    <section ng-cloak ng-controller="IceCreamController as icctrl">
+      <icecream-order-history ng-init="icctrl.getIceCream()" icecreams="icctrl.icecream" ng-click="icctrl.icecream.edit = !icctrl.icecream.edit">
+      </icecream-order-history>
+    </section>
     <section ng-controller="MilkShakeController as msctrl" ng-init="msctrl.getMilkShake()">
     <h1>Milk Shake</h1>
     <ul>
