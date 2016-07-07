@@ -39,7 +39,6 @@ function IceCreamController($http) {
   }.bind(this);
 
   this.deleteIceCream = function(icecream) {
-    console.log('hitting delete');
     $http.delete('http://localhost:3000/icecream/' + icecream._id)
     .then(() => {
       let index = this.icecream.indexOf(icecream);

@@ -14,8 +14,8 @@ function MilkShakeController($http) {
     });
   }.bind(this);
 
-  this.addMilkShake = function() {
-    $http.post('http://localhost:3000/milkshake', this.newMilkShake)
+  this.addMilkShake = function(newMilkShake) {
+    $http.post('http://localhost:3000/milkshake', newMilkShake)
     .then((res) => {
       this.milkshake.push(res.data);
       this.newMilkShake = null;
