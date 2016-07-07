@@ -36,11 +36,11 @@ describe('directive tests', () => {
     let inputattr = input.attr('ng-model');
     let input2 = angular.element(input[1]);
     let inputattr2 = input2.attr('ng-model');
+    let input3 = angular.element(input[2]);
+    let inputattr3 = input3.attr('ng-model');
 
     expect(inputattr).toBe('newIceCream.flavor');
     expect(inputattr2).toBe('newIceCream.scoops');
-    // expect(input[1]).toBe('newIceCream.scoops');
-    // expect(inputattr).toBe('newIceCream.vessel');
-    // expect(inputattr).toBe('newIceCream');
+    expect(inputattr3).toBe('newIceCream.vessel');
   });
 });
