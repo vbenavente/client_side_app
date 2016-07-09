@@ -1,5 +1,5 @@
 <li ng-repeat="icecream in icecreams">
-  Order: flavor: {{icecream.flavor}} scoops: {{icecream.scoops}} vessel: {{icecream.vessel}}
+  Order: flavor: <span>{{icecream.flavor}}</span> scoops: <span>{{icecream.scoops}}</span> vessel: <span>{{icecream.vessel}}</span>
   <button ng-click="icecream.edit = !icecream.edit">Edit</button>
   <icecream-update-order icecream="icecream" ng-hide="!icecream.edit">
   </icecream-update-order>
