@@ -10,7 +10,8 @@ const icecreamList = require('../app/templates/icecream/icecream-list-directive.
 const milkshakeList = require('../app/templates/milkshake/milkshake-list-directive.html');
 const icecreamUpdateOrder = require('../app/templates/icecream/icecream-updateorder-directive.html');
 const milkshakeUpdateOrder = require('../app/templates/milkshake/milkshake-updateorder-directive.html');
-// const icecreamOrderHistory = require('../app/templates/icecream/icecream-orderhistory-directive.html');
+const icecreamOrderHistory = require('../app/templates/icecream/icecream-orderhistory-directive.html');
+const milkshakeOrderHistory = require('../app/templates/milkshake/milkshake-orderhistory-directive.html');
 
 
 describe('directive tests', () => {
@@ -187,5 +188,59 @@ describe('directive tests', () => {
     expect(inputattr).toBe('updatedMilkShake.flavor');
     expect(inputattr2).toBe('updatedMilkShake.scoops');
     expect(inputattr3).toBe('updatedMilkShake.milkRichness');
+  });
+
+  it('should call a function to get icecream order list and have icecream list directive', () => {
+    $httpBackend.expectGET('./templates/icecream/icecream-orderhistory-directive.html')
+    .respond(200, icecreamOrderHistory);
+    $httpBackend.expectGET('./templates/icecream/icecream-list-directive.html')
+    .respond(200, icecreamList);
+    $httpBackend.expectGET('./templates/icecream/icecream-addorder-directive.html')
+    .respond(200, icecreamAddOrder);
+
+    // $scope.icecreams = [{
+    //   flavor: 'mint',
+    //   scoops: 2,
+    //   vessel: 'waffle cone'
+    // }, {
+    //   flavor: 'chocolate',
+    //   scoops: 4,
+    //   vessel: 'cup'
+    // }];
+
+    let element = angular.element('<section ng-controller="IceCreamController as icctrl"><icecream-order-history ng-init="getIceCream()" icecreams="icctrl.icecream"></icecream-order-history></section>');
+    let link = $compile(element);
+    let directive = link($scope);
+    $scope.$digest();
+    $httpBackend.flush();
+
+    let orderhistory = directive.find('icecream-order-history');
+    let geticecreams = orderhistory.attr('ng-init');
+    let icecreamlist = directive.find('icecream-list');
+
+    expect(geticecreams).toBe('getIceCream()');
+    expect(icecreamlist.length).toBe(1);
+  });
+
+  it('should call a function to get milkshake order list and have milkshake list directive', () => {
+    $httpBackend.expectGET('./templates/milkshake/milkshake-orderhistory-directive.html')
+    .respond(200, milkshakeOrderHistory);
+    $httpBackend.expectGET('./templates/milkshake/milkshake-list-directive.html')
+    .respond(200, milkshakeList);
+    $httpBackend.expectGET('./templates/milkshake/milkshake-addorder-directive.html')
+    .respond(200, milkshakeAddOrder);
+
+    let element = angular.element('<section ng-controller="MilkShakeController as msctrl"><milkshake-order-history ng-init="getMilkShake()" milkshakes="msctrl.milkshake"></milkshake-order-history></section>');
+    let link = $compile(element);
+    let directive = link($scope);
+    $scope.$digest();
+    $httpBackend.flush();
+
+    let orderhistory = directive.find('milkshake-order-history');
+    let getmilkshakes = orderhistory.attr('ng-init');
+    let milkshakelist = directive.find('milkshake-list');
+
+    expect(getmilkshakes).toBe('getMilkShake()');
+    expect(milkshakelist.length).toBe(1);
   });
 });
