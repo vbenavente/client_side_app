@@ -2,7 +2,8 @@ module.exports = function(app) {
   app.controller('IceCreamController', IceCreamController);
 };
 
-function IceCreamController($http) {
+function IceCreamController($http, ErrorService) {
+  this.error = ErrorService;
   this.icecream = [];
 
   this.getIceCream = function() {

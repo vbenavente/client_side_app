@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(app) {
-  require('./errorhandling-service.js')(app);
+module.exports = function(IceCreameryApp) {
+  require('./errorhandling-service.js')(IceCreameryApp);
 };

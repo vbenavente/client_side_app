@@ -1,4 +1,5 @@
-module.exports = function(app) {
-  require('./controllers/milkshake-controller')(app);
-  require('./directives')(app);
+module.exports = function(IceCreameryApp) {
+  require('./controllers/milkshake-controller')(IceCreameryApp);
+  require('./directives')(IceCreameryApp);
+  require('./services')(IceCreameryApp);
 };
