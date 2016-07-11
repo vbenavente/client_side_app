@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(app) {
-  app.factory('ErrorService', function() {
+module.exports = function(IceCreameryApp) {
+  IceCreameryApp.factory('ErrorService', function() {
     const service = {};
     const errors = [];
 
