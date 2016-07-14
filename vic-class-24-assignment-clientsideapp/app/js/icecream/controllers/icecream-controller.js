@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(app) {
   app.controller('IceCreamController', IceCreamController);
 };
@@ -5,9 +7,10 @@ module.exports = function(app) {
 function IceCreamController($http, ErrorService) {
   this.error = ErrorService;
   this.icecream = [];
+  const url = 'http://localhost:3000/icecream';
 
   this.getIceCream = function() {
-    $http.get('http://localhost:3000/icecream')
+    $http.get(url)
     .then((res) => {
       this.icecream = res.data;
     }, (err) => {
@@ -16,7 +19,7 @@ function IceCreamController($http, ErrorService) {
   }.bind(this);
 
   this.addIceCream = function(newIceCream) {
-    $http.post('http://localhost:3000/icecream', newIceCream)
+    $http.post(url, newIceCream)
     .then((res) => {
       this.icecream.push(res.data);
       this.newIceCream = null;
@@ -29,7 +32,7 @@ function IceCreamController($http, ErrorService) {
     icecream.flavor = updatedIceCream.flavor;
     icecream.scoops = updatedIceCream.scoops;
     icecream.vessel = updatedIceCream.vessel;
-    $http.put('http://localhost:3000/icecream/' + icecream._id, icecream)
+    $http.put(url + icecream._id, icecream)
     .then(() => {
       this.icecream = this.icecream.map(n => {
         return n._id === icecream._id ? icecream : n;
@@ -40,7 +43,7 @@ function IceCreamController($http, ErrorService) {
   }.bind(this);
 
   this.deleteIceCream = function(icecream) {
-    $http.delete('http://localhost:3000/icecream/' + icecream._id)
+    $http.delete(url + icecream._id)
     .then(() => {
       let index = this.icecream.indexOf(icecream);
       this.icecream.splice(index, 1);
