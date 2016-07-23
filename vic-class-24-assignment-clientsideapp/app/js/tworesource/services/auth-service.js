@@ -8,7 +8,8 @@ module.exports = function(app) {
     service.signUp = function(user) {
       return $http.post('http://localhost:3000/signup', user)
       .then((res) => {
-        token=res.data.token;
+        console.log(res.data);
+        token = res.data.token;
         $window.localStorage.token = token;
         return res;
       });
@@ -20,7 +21,7 @@ module.exports = function(app) {
 
       return $http({
         url: 'http://localhost:3000/signin',
-        method: 'POST',
+        method: 'GET',
         headers: {
           authorization: authString
         }

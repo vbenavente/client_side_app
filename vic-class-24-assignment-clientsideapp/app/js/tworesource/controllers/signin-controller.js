@@ -8,6 +8,8 @@ module.exports = function(app) {
     this.goMilkShake = function() {
       $location.url('/milkshake');
     };
+    this.getToken = AuthService.getToken;
+
     this.signUp = function(user) {
       AuthService.signUp(user)
       .then((res) => {
@@ -21,20 +23,12 @@ module.exports = function(app) {
         console.log(res);
         $location.path('/signin');
       })
-      .then(null, (err) => {
+      .then((err) => {
         console.log(err);
         $location.path('/signup');
       });
     };
 
-    this.signOut = function() {
-      AuthService.signOut()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    };
+    this.signOut = AuthService.signOut;
   });
 };

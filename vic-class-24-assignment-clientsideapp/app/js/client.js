@@ -8,8 +8,9 @@ require('./icecream/icecream')(IceCreameryApp);
 require('./milkshake/milkshake')(IceCreameryApp);
 require('./tworesource/tworesource')(IceCreameryApp);
 
-IceCreameryApp.config(['$routeProvider', function($route) {
-  $route.when('/', {
+IceCreameryApp.config(function($routeProvider) {
+  $routeProvider
+  .when('/', {
     templateUrl: './templates/partials/icecream.html',
     controller: 'IceCreamController',
     controllerAs: 'icctrl'
@@ -29,4 +30,4 @@ IceCreameryApp.config(['$routeProvider', function($route) {
     controller: 'SigninController',
     controllerAs: 'signinctrl'
   });
-}]);
+});
