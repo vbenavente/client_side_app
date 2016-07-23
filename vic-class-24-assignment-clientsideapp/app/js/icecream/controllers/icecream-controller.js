@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.controller('IceCreamController', IceCreamController);
 };
 
-function IceCreamController($http, ErrorService) {
+function IceCreamController($http, AuthService, ErrorService) {
   this.error = ErrorService;
   this.icecream = [];
   const url = 'http://localhost:3000/icecream/';

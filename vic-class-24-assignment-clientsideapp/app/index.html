@@ -5,7 +5,7 @@
   <title>Ice Creamery</title>
 </head>
 <body ng-app="IceCreameryApp">
-  <main>
+  <!-- <main>
     <section ng-cloak ng-controller="IceCreamController as icctrl">
       <icecream-order-history ng-init="icctrl.getIceCream()" icecreams="icctrl.icecream" ng-click="icctrl.icecream.edit = !icctrl.icecream.edit">
       </icecream-order-history>
@@ -14,7 +14,8 @@
       <milkshake-order-history ng-init="msctrl.getMilkShake()" milkshakes="msctrl.milkshake" ng-click="msctrl.milkshake.edit = !msctrl.milkshake.edit">
       </milkshake-order-history>
     </section>
-  </main>
+  </main> -->
+  <ng-view></ng-view>
   <script src="./bundle.js"></script>
 </body>
 </html>

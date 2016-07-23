@@ -2,8 +2,9 @@ module.exports = function(app) {
   app.controller('MilkShakeController', MilkShakeController);
 };
 
-function MilkShakeController($http) {
+function MilkShakeController($http, AuthService, ErrorService) {
   this.milkshake = [];
+  this.error = ErrorService;
 
   this.getMilkShake = function() {
     $http.get('http://localhost:3000/milkshake')
