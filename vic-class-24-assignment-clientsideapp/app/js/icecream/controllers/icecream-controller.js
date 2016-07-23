@@ -7,7 +7,7 @@ module.exports = function(app) {
 function IceCreamController($http, ErrorService) {
   this.error = ErrorService;
   this.icecream = [];
-  const url = 'http://localhost:3000/icecream';
+  const url = 'http://localhost:3000/icecream/';
 
   this.getIceCream = function() {
     $http.get(url)
